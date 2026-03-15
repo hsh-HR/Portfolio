@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>황서현 — HR Portfolio</title>
+  <style>
+    /* ============================
+       @font-face
+    ============================ */
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 100;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-Thin.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 200;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-ExtraLight.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 300;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-Light.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 400;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-Regular.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 500;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-Medium.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 600;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-SemiBold.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 700;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-Bold.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 800;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-ExtraBold.otf') format('opentype');
+    }
+    @font-face {
+      font-family: 'Pretendard';
+      font-weight: 900;
+      font-style: normal;
+      src: url('./Pretendard/Pretendard-Black.otf') format('opentype');
+    }
+
+    /* ============================
+       CSS Variables
+    ============================ */
+    :root {
+      --color-text-primary:   #191F28;
+      --color-text-secondary: #6B7684;
+      --color-text-tertiary:  #8B95A1;
+      --color-accent:         #3182F6;
+      --color-accent-light:   #EBF3FE;
+      --color-bg:             #F9FAFB;
+      --color-surface:        #FFFFFF;
+      --color-border:         #E5E8EB;
+      --color-footer-bg:      #191F28;
+
+      --font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+
+      --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 6px 24px rgba(0, 0, 0, 0.10);
+      --transition: 0.2s ease;
+
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   16px;
+      --radius-pill: 100px;
+    }
+
+    /* ============================
+       Reset & Base
+    ============================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text-primary);
+      background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* ============================
+       Layout Container
+    ============================ */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================
+       Navigation
+    ============================ */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 56px;
+      background: rgba(249, 250, 251, 0.90);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-brand {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* ============================
+       Hero Section
+    ============================ */
+    #hero {
+      background: var(--color-bg);
+      padding: 100px 24px 88px;
+    }
+
+    .hero-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-name {
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--color-text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-tagline {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .tag-pill {
+      display: inline-block;
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: var(--radius-pill);
+    }
+
+    /* ============================
+       Section Common
+    ============================ */
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+    }
+
+    /* ============================
+       AI Tools Section
+    ============================ */
+    #ai-tools {
+      background: var(--color-surface);
+      padding: 80px 24px;
+    }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .tool-card {
+      position: relative;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      overflow: hidden;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+
+    .tool-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--color-accent);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .tool-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .tool-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--color-accent-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .tool-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--color-accent);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .tool-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .tool-link {
+      font-size: 13px;
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    /* ============================
+       Experience Section
+    ============================ */
+    #experience {
+      background: var(--color-bg);
+      padding: 80px 24px;
+    }
+
+    .company-block {
+      margin-bottom: 64px;
+    }
+
+    .company-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .company-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 10px 16px;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--color-border);
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      letter-spacing: -0.02em;
+    }
+
+    .company-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+    }
+
+    .company-period {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-text-tertiary);
+      margin-left: auto;
+    }
+
+    .company-tag {
+      display: inline-block;
+      background: var(--color-accent-light);
+      color: var(--color-accent);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: var(--radius-pill);
+    }
+
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .role-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--color-accent);
+      padding: 22px 24px;
+      transition: box-shadow var(--transition);
+    }
+
+    .role-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .role-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .role-period {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-accent);
+      margin-bottom: 16px;
+    }
+
+    .role-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 14px;
+      margin-bottom: 8px;
+    }
+
+    .role-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .role-list > li {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+
+    .role-list > li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--color-text-tertiary);
+    }
+
+    .role-list .sub-list {
+      list-style: none;
+      padding-left: 16px;
+      margin-top: 4px;
+    }
+
+    .role-list .sub-list > li {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 3px;
+    }
+
+    .role-list .sub-list > li::before {
+      content: attr(data-index);
+      position: absolute;
+      left: 0;
+      color: var(--color-text-tertiary);
+      font-size: 12px;
+    }
+
+    .role-list .sub-sub-list {
+      list-style: none;
+      padding-left: 16px;
+      margin-top: 2px;
+    }
+
+    .role-list .sub-sub-list > li {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 2px;
+    }
+
+    .role-list .sub-sub-list > li::before {
+      content: '·';
+      position: absolute;
+      left: 4px;
+      color: var(--color-text-tertiary);
+    }
+
+    .role-achievement {
+      background: var(--color-accent-light);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-top: 14px;
+    }
+
+    .role-achievement .role-section-label {
+      color: var(--color-accent);
+      margin-top: 0;
+    }
+
+    .role-achievement .role-list > li {
+      color: var(--color-text-primary);
+    }
+
+    .role-achievement .role-list > li::before {
+      color: var(--color-accent);
+    }
+
+    /* Compact role card (카카오) */
+    .role-card.compact {
+      padding: 18px 22px;
+    }
+
+    .role-card.compact .role-title {
+      font-size: 15px;
+    }
+
+    /* ============================
+       Skills Section
+    ============================ */
+    #skills {
+      background: var(--color-surface);
+      padding: 80px 24px;
+    }
+
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .skill-group {
+      margin-bottom: 24px;
+    }
+
+    .skill-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-group-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-tertiary);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-chip {
+      display: inline-block;
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      color: var(--color-text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    /* Career Timeline */
+    .career-timeline {
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .career-timeline::before {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--color-border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -21px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      border: 2px solid var(--color-surface);
+      box-shadow: 0 0 0 2px var(--color-accent);
+    }
+
+    .timeline-year {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-accent);
+      letter-spacing: 0.04em;
+      margin-bottom: 2px;
+    }
+
+    .timeline-company {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      letter-spacing: -0.01em;
+    }
+
+    .timeline-desc {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-top: 2px;
+    }
+
+    /* ============================
+       Footer
+    ============================ */
+    footer {
+      background: var(--color-footer-bg);
+      padding: 56px 24px;
+    }
+
+    .footer-inner {
+      text-align: center;
+    }
+
+    .footer-name {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .footer-role {
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 28px;
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.10);
+      margin-bottom: 24px;
+    }
+
+    .footer-note {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ============================
+       Responsive
+    ============================ */
+    @media (min-width: 640px) {
+      .role-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .tool-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 960px) {
+      .tool-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .skills-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 64px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-name {
+        font-size: 36px;
+      }
+      .hero-tagline {
+        font-size: 16px;
+      }
+      .section-title {
+        font-size: 22px;
+      }
+      .nav-links {
+        gap: 16px;
+      }
+      .nav-links a {
+        font-size: 12px;
+      }
+      .company-period {
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== Navigation ==================== -->
+  <nav>
+    <div class="container nav-inner">
+      <span class="nav-brand">황서현</span>
+      <ul class="nav-links">
+        <li><a href="#ai-tools">AI 활용</a></li>
+        <li><a href="#experience">경력</a></li>
+        <li><a href="#skills">역량</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ==================== Hero ==================== -->
+  <section id="hero">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">HRD / AI</span>
+      <h1 class="hero-name">황서현</h1>
+      <p class="hero-tagline">사람과 조직의 성장을 설계합니다</p>
+      <div class="hero-tags">
+        <span class="tag-pill">NHN 인재개발팀</span>
+        <span class="tag-pill">HK이노엔</span>
+        <span class="tag-pill">카카오</span>
+        <span class="tag-pill">AI 교육</span>
+        <span class="tag-pill">리더십 교육</span>
+        <span class="tag-pill">조직개발</span>
+        <span class="tag-pill">온보딩 설계</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AI Tools ==================== -->
+  <section id="ai-tools">
+    <div class="container">
+      <p class="section-label">AI 활용 업무 개선 / 효율화</p>
+      <h2 class="section-title">직접 설계한 AI 기반 툴</h2>
+      <div class="tool-grid">
+
+        <!-- Tool 1 -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <p class="tool-name">교육 DB 취합 효율화 대시보드</p>
+          <a href="#" class="tool-link">Better PLUS - 교육 대시보드 →</a>
+        </div>
+
+        <!-- Tool 2 -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <p class="tool-name">리더 대상, 구성원 면담 지원 Tool</p>
+          <a href="#" class="tool-link">Review Supporter - 면담 관리 도구 →</a>
+        </div>
+
+        <!-- Tool 3 -->
+        <div class="tool-card">
+          <div class="tool-icon">
+            <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.3"/></svg>
+          </div>
+          <p class="tool-name">리더 1on1 피드백 시뮬레이터 (FIRN 기반)</p>
+          <a href="#" class="tool-link">바로가기 →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Experience ==================== -->
+  <section id="experience">
+    <div class="container">
+      <p class="section-label">Work Experience</p>
+      <h2 class="section-title">경력 사항</h2>
+
+      <!-- ========== NHN ========== -->
+      <div class="company-block">
+        <div class="company-header">
+          <h3 class="company-name">NHN</h3>
+          <span class="company-role">인재개발팀 / 사내 교육, AX 확산 담당</span>
+          <span class="company-tag">인재개발 · AI 교육</span>
+          <span class="company-period">2023.11 — 현재</span>
+        </div>
+        <div class="role-grid">
+
+          <!-- NHN Card 1 -->
+          <div class="role-card">
+            <p class="role-title">리더십 교육 기획/운영 전반</p>
+            <p class="role-period">수행 기간: 2025.01 ~ 현재</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>25년 상/하반기 성과관리 교육 기획/운영(10차수)</li>
+              <li>리더 대상 소규모 주제 기반 워크숍 기획(파일럿)</li>
+              <li>승진자 교육 기획/운영
+                <ul class="sub-list">
+                  <li data-index="1)">마인드셋 워크숍/타운홀 미팅(법인별, 3차수)</li>
+                  <li data-index="2)">행동실천 리더십 교육(직급별, 6차수)</li>
+                </ul>
+              </li>
+              <li>리더 대상 명사 트렌드/인사이트 특강(2차수)</li>
+              <li>AI를 활용한 리더 지원 도구 제작 — 조직장 1 on 1 관리 대시보드, 승진자 교육 개인별 실습 콘텐츠 제작(비전 수립, 네트워킹)</li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>전사 리더십 교육 프로그램 체계화</li>
+                <li>승진자 교육 마인드셋 워크숍을 통한 직급별/역량레벨별 필요 리더십 역량 도출</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NHN Card 2 -->
+          <div class="role-card">
+            <p class="role-title">전사 AI 교육 / AX 문화 조성</p>
+            <p class="role-period">수행 기간: 2025.06 ~ 현재</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>인재개발팀 주관, AI 해커톤 기획/운영 (26년 3월, 팀 프로젝트)</li>
+              <li>전사 AI 교육 프로그램 기획/운영
+                <ul class="sub-list">
+                  <li data-index="1)">사외/사내 트렌드/인사이트 특강 (4차수)</li>
+                  <li data-index="2)">AI 원데이 스킬 과정 (25차수)</li>
+                  <li data-index="3)">현업 맞춤형 AI Tool 과정 (5차수)</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>사내 인력만으로 AI 해커톤을 기획하고 운영한 경험 획득</li>
+                <li>단기간, 다차수 운영을 통한 임직원 니즈 충족(전 차수 평균 4.4점)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NHN Card 3 -->
+          <div class="role-card">
+            <p class="role-title">조직개발 워크숍 과정 개발/운영</p>
+            <p class="role-period">수행 기간: 2024.09 ~ 현재</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>에니어그램 워크숍 교안 개발/강의 진행
+                <ul class="sub-list">
+                  <li data-index="1)">팀 단위, 팀 내 구성원 성향 이해 워크숍(15차수)</li>
+                  <li data-index="2)">실 단위, 팀 간 성향 이해 워크숍(3차수)</li>
+                  <li data-index="3)">신입 공채 대상, 동기 간 성향 이해/비전 설정 워크숍(2차수)</li>
+                </ul>
+              </li>
+              <li>AI Tool로 제작한 실습 콘텐츠 운영 — 에니어그램 유형 간 대화 시뮬레이터, 우리 조직 AI 에니어그램 프로필</li>
+              <li>사후 팀장 서포트 가이드 KIT 제공
+                <ul class="sub-sub-list">
+                  <li>제공사항: AI 제작, 조직장-구성원 간 에니어그램 관계 가이드 / 유형지</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>조직 이슈 사전 취합 및 워크숍 진행을 통한 지원 방안 도출</li>
+                <li>대상별/목적별 과정 모듈 개발</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NHN Card 4 -->
+          <div class="role-card">
+            <p class="role-title">신규/경력 입사자 온보딩</p>
+            <p class="role-period">수행 기간: 2023.12 ~ 2024.11</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>온보딩 프로세스 운영
+                <ul class="sub-list">
+                  <li data-index="1)">OT: 법인/서비스, 시스템, 인사제도 교육(주 1회)</li>
+                  <li data-index="2)">신규입사자 교육: 네트워킹, 핵심가치 빙고 게임, 비전 수립(격월 1회)</li>
+                  <li data-index="3)">멘토링 운영(3개월 간)
+                    <ul class="sub-sub-list">
+                      <li>HR Mate(HR실 멘토): 회사 전반 적응에 대한 지원</li>
+                      <li>Better Mate(현업 멘토): 조직 적응에 대한 지원</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>온보딩 프로세스 종료 후, 발생한 회사에 대한 피드백 결과를 정리하여 인사지원실에 보고</li>
+                <li>신규입사자 입사 후에도 관계 유지하며 현업의 파트너 역할 수행</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- NHN Card 5 -->
+          <div class="role-card">
+            <p class="role-title">신입 공채 교육</p>
+            <p class="role-period">수행 기간: 24.10, 25.10</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>전체 커리큘럼 기획 및 운영
+                <ul class="sub-list">
+                  <li data-index="1)">공통 교육: 신규입사자 간 네트워킹, 회사/시스템 소개, 사업부 및 직무 소개, 비전 수립(4일)</li>
+                  <li data-index="2)">기술 교육: 기술 시스템 온보딩, 게임 제작 툴 실습(3일)</li>
+                  <li data-index="3)">멘토링: 공채 선배 성장 이야기 세션, 멘토 런치 등</li>
+                </ul>
+              </li>
+              <li>AI를 활용한 Ice-breaking, 네트워킹 프로그램 운영</li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>네트워킹/성향 진단/비전 수립 프로그램 자체 운영을 통한 비용 절감(전년 대비 전체 비용 70%)</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========== HK이노엔 ========== -->
+      <div class="company-block">
+        <div class="company-header">
+          <h3 class="company-name">HK이노엔</h3>
+          <span class="company-role">사내 교육, 조직문화 담당</span>
+          <span class="company-tag">HRD · 조직문화</span>
+          <span class="company-period">2021.04 — 2023.11</span>
+        </div>
+        <div class="role-grid">
+
+          <!-- HK Card 1 -->
+          <div class="role-card">
+            <p class="role-title">신규/경력 입사자 온보딩</p>
+            <p class="role-period">수행 기간: 2022.01 ~ 2023.10</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>온보딩 과정 운영
+                <ul class="sub-list">
+                  <li data-index="1)">입문교육: 핵심가치, 회사/시스템/문화 교육(月 2회 진행)</li>
+                  <li data-index="2)">조직별 특화 교육 운영: 제품/질환 온라인 교육 제작(촬영, 교안 제작 지원), 직무 시스템 교육(月 1회 진행)</li>
+                  <li data-index="3)">분기별 경력입사자 교육 및 대표이사 간담회(입사 3개월 후)</li>
+                </ul>
+              </li>
+              <li>강의 진행: 핵심가치 교육, 회사 소개, 시스템 소개</li>
+              <li>버디 활동 운영(3개월 간)</li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>22년, 입문교육 만족도 조사 점수 상반기 대비 하반기 0.33점 상승(4.45 → 4.78점, 5점 만점)</li>
+                <li>5년간 활용 가능한 영업사원 교육용 제품/질환 온라인 교육(총 53강) 제작을 통한 수시 오프라인 교육비 절감</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- HK Card 2 -->
+          <div class="role-card">
+            <p class="role-title">제약사업부 영업사원 셀링 스킬 과정 개발/운영</p>
+            <p class="role-period">수행 기간: 2023.02 ~ 2023.05</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>셀링 스킬 과정 개발
+                <ul class="sub-list">
+                  <li data-index="1)">BP 지점장 워크숍 운영 및 결과 도출</li>
+                  <li data-index="2)">셀링 스킬 교안 제작</li>
+                </ul>
+              </li>
+              <li>셀링 스킬 과정 운영(7Hr, 14차수)
+                <ul class="sub-list">
+                  <li data-index="1)">셀링 스킬 과정 결과물 취합 및 공유</li>
+                  <li data-index="2)">현업적용도 평가 진행</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>3개월 후, 현업적용도 평가 결과 0.3점 상승(지식, 현 상태)</li>
+                <li>현업 부서와의 소통을 통한 직무 교육 과정 자체 개발, 운영</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- HK Card 3 -->
+          <div class="role-card">
+            <p class="role-title">1, 3년차 오프라인 리텐션 프로그램</p>
+            <p class="role-period">수행 기간: 2022.03 ~ 2023.08</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>전반적인 운영 안 기획 및 진행: 1년차(1박 2일), 6회 진행 / 3년차(2박 3일), 1회 진행</li>
+              <li>행사/교육 업체 커뮤니케이션</li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>비전 재설정/리프레쉬의 주제에 알맞은 프로그램 기획으로 높은 대상자 만족도(7회 평균 4.9점)</li>
+                <li>동종 업계 벤치마킹을 통한 현황 조사/동종 업계 대비 우수한 프로그램 기획</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- HK Card 4 -->
+          <div class="role-card">
+            <p class="role-title">웰컴키트/온보딩 가이드북 신규 제작</p>
+            <p class="role-period">수행 기간: 2022.04 ~ 2022.07</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>웰컴키트 신규 제작
+                <ul class="sub-list">
+                  <li data-index="1)">웰컴키트 컨셉 기획</li>
+                  <li data-index="2)">웰컴키트 물품 선정 및 업체 커뮤니케이션</li>
+                </ul>
+              </li>
+              <li>온보딩 가이드북 신규 제작
+                <ul class="sub-list">
+                  <li data-index="1)">온보딩 가이드북 컨셉/컨텐츠 기획(문화, 시스템, 복리후생, 교육)</li>
+                  <li data-index="2)">담을 내용에 관하여 유관부서와의 협업</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>최저 단가 업체 서칭을 통한 웰컴키트 구성품 비용 절감</li>
+                <li>기존에 없던 온보딩 가이드북 제작을 통한 신규 입사자 조기 전력화</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- HK Card 5 -->
+          <div class="role-card">
+            <p class="role-title">타운홀 미팅 진행</p>
+            <p class="role-period">수행 기간: 2022.02 ~ 2023.06</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>조직별/사업장별 타운홀 미팅 기획 및 사회 진행(온라인 10회, 오프라인 7회)</li>
+              <li>조직별 안건 취합, 유관부서 공유</li>
+              <li>푸드트럭/케이터링 등 이벤트 어레인지</li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>도출된 안건의 조치 가능 여부 유관 부서에 검토 요청 후, 조직별 투명한 결과 공유</li>
+                <li>승진 요건 완화 등의 인사 규정/시설, 환경 보수 등 실질적인 개선(100개 이상의 안건 중 약 30개의 안건 검토 후 조치 완료)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- HK Card 6 -->
+          <div class="role-card">
+            <p class="role-title">사내 온라인 교육 플랫폼 운영</p>
+            <p class="role-period">수행 기간: 2021.12 ~ 2023.08</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>신규 과정 개설, 업체 커뮤니케이션, 수강 이력 관리</li>
+              <li>사내 온라인 교육 플랫폼 홍보 컨텐츠 제작</li>
+            </ul>
+            <div class="role-achievement">
+              <p class="role-section-label">업무 성과</p>
+              <ul class="role-list">
+                <li>온라인 과정 홍보 컨텐츠 매월 발간, 전사 임직원 수강률 상승(HRD 중점 추진사항) — 22년 상반기 대비(전 임직원 중 약 4%) 22년 하반기(약 9%)로 수강률 100% 이상 상승</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- HK Card 7 -->
+          <div class="role-card">
+            <p class="role-title">전문의약품 영업</p>
+            <p class="role-period">수행 기간: 2021.04 ~ 2021.11</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>병의원 전문의약품 영업(수원시)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========== 카카오 ========== -->
+      <div class="company-block">
+        <div class="company-header">
+          <h3 class="company-name">카카오</h3>
+          <span class="company-role">어시스턴트</span>
+          <span class="company-tag">온보딩 · 조직문화</span>
+          <span class="company-period">2020.06 — 2020.12</span>
+        </div>
+        <div class="role-grid">
+
+          <!-- Kakao Card 1 -->
+          <div class="role-card compact">
+            <p class="role-title">2020 하반기 개발직군 신입 공채 온보딩 콘텐츠 제작 및 지원</p>
+            <p class="role-period">2021 신입온보딩 TF 어시스턴트 / 2020.09 ~ 2020.12</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>개발자 신입 공채 입사 프로세스 지원</li>
+              <li>입사 프로세스 관련 미디어 기획 및 제작</li>
+            </ul>
+          </div>
+
+          <!-- Kakao Card 2 -->
+          <div class="role-card compact">
+            <p class="role-title">2020 비개발직군 인턴십 온보딩, 조직문화 콘텐츠 제작 및 지원</p>
+            <p class="role-period">성장문화팀 어시스턴트 / 2020.06 ~ 2020.07</p>
+            <p class="role-section-label">주요 역할</p>
+            <ul class="role-list">
+              <li>교육 프로그램 / 사내 도서관 리브랜딩</li>
+              <li>사내 문화 가이드 기획 및 제작</li>
+              <li>기술 교육 영상 제작</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== Skills ==================== -->
+  <section id="skills">
+    <div class="container">
+      <p class="section-label">Core Competencies</p>
+      <h2 class="section-title">핵심 역량</h2>
+      <div class="skills-layout">
+
+        <!-- Skills chips -->
+        <div>
+          <div class="skill-group">
+            <p class="skill-group-label">교육 기획 / 운영</p>
+            <div class="skill-chips">
+              <span class="skill-chip">HRD</span>
+              <span class="skill-chip">리더십 교육</span>
+              <span class="skill-chip">온보딩 설계</span>
+              <span class="skill-chip">과정 개발</span>
+              <span class="skill-chip">셀링 스킬</span>
+              <span class="skill-chip">신입 공채 교육</span>
+              <span class="skill-chip">커리큘럼 기획</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-label">조직문화 / 조직개발</p>
+            <div class="skill-chips">
+              <span class="skill-chip">에니어그램 워크숍</span>
+              <span class="skill-chip">타운홀 미팅</span>
+              <span class="skill-chip">리텐션 프로그램</span>
+              <span class="skill-chip">온보딩 가이드북</span>
+              <span class="skill-chip">조직개발</span>
+              <span class="skill-chip">강의 진행</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <p class="skill-group-label">AI 활용 / AX 확산</p>
+            <div class="skill-chips">
+              <span class="skill-chip">AI 교육 설계</span>
+              <span class="skill-chip">AI 해커톤</span>
+              <span class="skill-chip">AI Tool 제작</span>
+              <span class="skill-chip">AX 문화 조성</span>
+              <span class="skill-chip">업무 자동화</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Timeline -->
+        <div>
+          <p class="skill-group-label" style="margin-bottom: 20px;">커리어 타임라인</p>
+          <div class="career-timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">2020</p>
+              <p class="timeline-company">카카오 (체험형 인턴)</p>
+              <p class="timeline-desc">성장문화팀 / 신입온보딩 TF 어시스턴트</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">2021 — 2023</p>
+              <p class="timeline-company">HK이노엔</p>
+              <p class="timeline-desc">사내 교육, 조직문화 담당</p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <p class="timeline-year">2023 —</p>
+              <p class="timeline-company">NHN</p>
+              <p class="timeline-desc">인재개발팀 / 사내 교육, AX 확산 담당</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== Footer ==================== -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <p class="footer-name">황서현</p>
+      <p class="footer-role">HRD / AI Specialist</p>
+      <hr class="footer-divider">
+      <p class="footer-note">이 포트폴리오는 직접 기획·제작하였습니다 · 2026</p>
+    </div>
+  </footer>
+
+  <!-- ==================== JS: Scroll Spy ==================== -->
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.forEach(a => {
+              a.classList.toggle('active',
+                a.getAttribute('href') === '#' + entry.target.id);
+            });
+          }
+        });
+      },
+      { threshold: 0.25, rootMargin: '-56px 0px 0px 0px' }
+    );
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>

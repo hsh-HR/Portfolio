@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/황서현_경력기술서.html" }
+  ]
+}
